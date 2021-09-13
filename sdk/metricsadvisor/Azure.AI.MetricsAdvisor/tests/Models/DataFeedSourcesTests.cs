@@ -14,8 +14,6 @@ namespace Azure.AI.MetricsAdvisor.Tests
 {
     public class DataFeedSourcesTests : MockClientTestBase
     {
-        private const string NewSecret = "new_secret";
-
         private static object[] CreateDataSourceTestCases =
         {
             new object[] { new AzureApplicationInsightsDataFeedSource("mock", "secret", "mock", "mock"), "apiKey" },
@@ -175,7 +173,7 @@ namespace Azure.AI.MetricsAdvisor.Tests
             MockRequest request = mockTransport.Requests.First();
             string content = ReadContent(request);
 
-            Assert.That(content, ContainsJsonString(secretPropertyName, NewSecret));
+            Assert.That(content, ContainsJsonString(secretPropertyName, "new_secret"));
         }
 
         [Test]
@@ -232,44 +230,44 @@ namespace Azure.AI.MetricsAdvisor.Tests
             switch (dataSource)
             {
                 case AzureApplicationInsightsDataFeedSource d:
-                    d.UpdateApiKey(NewSecret);
+                    d.UpdateApiKey("new_secret");
                     break;
                 case AzureBlobDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case AzureCosmosDbDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case AzureDataExplorerDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case AzureDataLakeStorageDataFeedSource d:
-                    d.UpdateAccountKey(NewSecret);
+                    d.UpdateAccountKey("new_secret");
                     break;
                 case AzureEventHubsDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case AzureTableDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case InfluxDbDataFeedSource d:
-                    if (secretPropertyName == "connectionString") d.UpdateConnectionString(NewSecret);
-                    else d.UpdatePassword(NewSecret);
+                    if (secretPropertyName == "connectionString") d.UpdateConnectionString("new_secret");
+                    else d.UpdatePassword("new_secret");
                     break;
                 case LogAnalyticsDataFeedSource d:
-                    d.UpdateClientSecret(NewSecret);
+                    d.UpdateClientSecret("new_secret");
                     break;
                 case MongoDbDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case MySqlDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case PostgreSqlDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 case SqlServerDataFeedSource d:
-                    d.UpdateConnectionString(NewSecret);
+                    d.UpdateConnectionString("new_secret");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException($"Unknown data source type: {dataSource.GetType()}");
