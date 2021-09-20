@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Batch
 
 #region // constructors
 
-        private BatchClient()
+        protected BatchClient()
         {
             _disposableStateBox = new BatchClientDisposableStateBox(this);
 
