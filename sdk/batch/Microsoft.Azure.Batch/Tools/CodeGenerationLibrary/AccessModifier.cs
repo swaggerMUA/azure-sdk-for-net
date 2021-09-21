@@ -8,9 +8,9 @@ namespace CodeGenerationLibrary
 {
     public enum AccessModifier
     {
-        @public,
-        @protected,
-        @private,
-        @internal
+        @public = 4,
+        @protected = 3,
+        @private = 2,
+        @internal = 1
     }
 }
